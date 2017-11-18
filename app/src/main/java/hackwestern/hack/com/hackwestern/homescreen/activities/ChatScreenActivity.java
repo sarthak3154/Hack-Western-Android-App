@@ -20,6 +20,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
+import com.google.firebase.database.ServerValue;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.HashMap;
@@ -112,7 +113,14 @@ public class ChatScreenActivity extends SwipeBackActivity implements ChatScreenC
         mFirebaseDatabaseReference = FirebaseDatabase.getInstance().getReference();
         conversationId = "23423rsfsf34";
 
-        queryRef = mFirebaseDatabaseReference.child(CONVERSATION_CHILD).child(conversationId).child(MESSAGES_CHILD).orderByChild(KEY_POSTED_AT);
+        Query query = mFirebaseDatabaseReference.child(CONVERSATION_CHILD).child(conversationId).child(MESSAGES_CHILD);
+        queryRef = query.orderByChild(KEY_POSTED_AT);
+
+        UserProfileData userProfileData = UserProfileData.getUserData();
+        if (userProfileData != null)
+            mFirebaseDatabaseReference.child(CONVERSATION_CHILD).child(conversationId).child(MESSAGES_CHILD).child(KEY_SENDER_EMAIL).setValue(userProfileData.getEmail());
+        mFirebaseDatabaseReference.child(CONVERSATION_CHILD).child(conversationId).child(MESSAGES_CHILD).child(KEY_RECIPIENT_EMAIL).setValue(recipientEmail);
+
         chatsAdapter = new ChatsAdapter(this, ChatDataModel.class, R.layout.item_chat_message, ChatViewHolder.class, queryRef);
         queryRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -201,6 +209,7 @@ public class ChatScreenActivity extends SwipeBackActivity implements ChatScreenC
             message.put(KEY_RECIPIENT_NAME, recipientName);
             message.put(KEY_SENDER_EMAIL, userProfileData.getEmail());
             message.put(KEY_RECIPIENT_EMAIL, recipientEmail);
+            message.put(KEY_POSTED_AT, ServerValue.TIMESTAMP);
             message.put(KEY_TEXT, etMessage.getText().toString());
             mFirebaseDatabaseReference.child(CONVERSATION_CHILD).child(conversationId).child(MESSAGES_CHILD).push().setValue(message);
             etMessage.setText("");

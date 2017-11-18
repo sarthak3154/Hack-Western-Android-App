@@ -7,11 +7,16 @@ import javax.inject.Singleton;
 
 import dagger.Module;
 import dagger.Provides;
+import hackwestern.hack.com.hackwestern.BuildSchemeConstants;
+import hackwestern.hack.com.hackwestern.homescreen.interfaces.HomeScreenWebServiceInterface;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
 import okhttp3.Response;
 import okhttp3.logging.HttpLoggingInterceptor;
+import retrofit2.GsonConverterFactory;
+import retrofit2.Retrofit;
+import retrofit2.RxJavaCallAdapterFactory;
 
 /**
  * Created by Sarthak on 18-11-2017
@@ -31,7 +36,6 @@ public class ApiModule {
     public OkHttpClient provideClient(HttpLoggingInterceptor loggingInterceptor) {
         OkHttpClient.Builder builder = new OkHttpClient.Builder();
         builder.addInterceptor(loggingInterceptor);
-
         builder.addInterceptor(new Interceptor() {
             @Override
             public Response intercept(Chain chain) throws IOException {
@@ -44,6 +48,23 @@ public class ApiModule {
         });
         builder.connectTimeout(120, TimeUnit.SECONDS);
         return builder.build();
+    }
+
+    @Provides
+    @Singleton
+    public Retrofit provideRetrofitBuilder(OkHttpClient okHttpClient) {
+        return new Retrofit.Builder()
+                .baseUrl(BuildSchemeConstants.BASE_URL)
+                .client(okHttpClient)
+                .addConverterFactory(GsonConverterFactory.create())
+                .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                .build();
+    }
+
+    @Provides
+    @Singleton
+    public HomeScreenWebServiceInterface provideHomeScreenWebService(Retrofit retrofit) {
+        return retrofit.create(HomeScreenWebServiceInterface.class);
     }
 
 }

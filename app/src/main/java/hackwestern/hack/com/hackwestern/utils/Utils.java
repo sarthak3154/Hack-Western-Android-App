@@ -2,6 +2,8 @@ package hackwestern.hack.com.hackwestern.utils;
 
 import android.content.Context;
 import android.graphics.Typeface;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 
 /**
  * Created by Sarthak on 18-11-2017
@@ -23,4 +25,19 @@ public class Utils {
         }
         return typeface;
     }
+
+    public static boolean isNetworkAvailable(Context context) {
+        try {
+            ConnectivityManager connManager = (ConnectivityManager) context.getSystemService
+                    (Context.CONNECTIVITY_SERVICE);
+            NetworkInfo networkInfo = connManager.getActiveNetworkInfo();
+            if (networkInfo != null && networkInfo.isAvailable() && networkInfo.isConnected()) {
+                return true;
+            }
+        } catch (Exception ex) {
+            return false;
+        }
+        return false;
+    }
+
 }

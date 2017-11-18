@@ -13,4 +13,5 @@
     <color name="color_grey">#c5c5c5</color>
     <color name="color_hint_grey">#6F7579</color>
     <color name="transparent">#00000000</color>
+    <color name="color_placeholder_background">#E3E3E3</color>
 </resources>

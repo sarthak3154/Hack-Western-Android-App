@@ -29,12 +29,13 @@
             android:orientation="vertical">
 
             <LinearLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/dimen_20dp"
                 android:orientation="horizontal">
 
                 <hackwestern.hack.com.hackwestern.widgets.AppTextView
-                    android:id="@+id/tvName"
+                    android:id="@+id/userTitle"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="@string/string_chat_user_name"
@@ -42,19 +43,22 @@
                     app:textStyle="@integer/OPEN_SANS_REGULAR" />
 
                 <hackwestern.hack.com.hackwestern.widgets.AppTextView
-                    android:id="@+id/tvHours"
-                    android:layout_width="wrap_content"
+                    android:id="@+id/userLastUpdate"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="end"
                     android:layout_marginLeft="@dimen/dimen_10dp"
                     android:layout_marginStart="@dimen/dimen_10dp"
+                    android:layout_weight="1"
                     android:text="9 hrs ago"
+                    android:textAlignment="textEnd"
                     android:textColor="@color/color_hint_grey"
                     android:textSize="12sp"
                     app:textStyle="@integer/OPEN_SANS_REGULAR" />
             </LinearLayout>
 
             <hackwestern.hack.com.hackwestern.widgets.AppTextView
-                android:id="@+id/tvChatText"
+                android:id="@+id/userText"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginRight="16dp"
@@ -64,7 +68,6 @@
                 android:text="Lorem ipsum dolor sit amet dfsdfsfsdfsf sdfsdfs sfsdf sfdf dsfs"
                 android:textColor="@color/color_grey_dark" />
         </LinearLayout>
-
 
     </LinearLayout>
 
