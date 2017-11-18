@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">HackWestern</string>
+    <string name="string_chat_user_name">Sarthak</string>
+    <string name="string_send">Send</string>
+    <string name="string_add_chat">Type in</string>
+
 </resources>

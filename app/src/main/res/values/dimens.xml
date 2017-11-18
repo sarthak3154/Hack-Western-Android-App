@@ -2,4 +2,13 @@
 <resources>
     <dimen name="dimen_40dp">40dp</dimen>
     <dimen name="dimen_3dp">3dp</dimen>
+    <dimen name="dimen_2dp">2dp</dimen>
+    <dimen name="dimen_4dp">4dp</dimen>
+    <dimen name="dimen_5dp">5dp</dimen>
+    <dimen name="dimen_1dp">1dp</dimen>
+    <dimen name="dimen_72dp">72dp</dimen>
+    <dimen name="dimen_8dp">8dp</dimen>
+    <dimen name="dimen_18sp">18dp</dimen>
+    <dimen name="chat_avatar_size">40dp</dimen>
+    <dimen name="dimen_10dp">10dp</dimen>
 </resources>

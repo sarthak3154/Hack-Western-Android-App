@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <integer name="OPEN_SANS_REGULAR">0</integer>
+    <integer name="PT_SANS_WEB_REGULAR">1</integer>
+    <integer name="DOSIS_SEMI_BOLD">2</integer>
+</resources>

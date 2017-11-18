@@ -8,4 +8,9 @@
     <color name="color_black_secondary">#1D1D26</color>
     <color name="black_translucent">#7f000000</color>
     <color name="color_white">#FFFFFF</color>
+    <color name="color_grey_dark">#82000000</color>
+    <color name="color_navy_blue">#212A31</color>
+    <color name="color_grey">#c5c5c5</color>
+    <color name="color_hint_grey">#6F7579</color>
+    <color name="transparent">#00000000</color>
 </resources>

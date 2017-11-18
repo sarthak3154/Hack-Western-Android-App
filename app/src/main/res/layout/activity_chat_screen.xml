@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/toolbarChat"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        app:elevation="@dimen/dimen_2dp"
+        app:layout_scrollFlags="scroll|enterAlways"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+
+        <hackwestern.hack.com.hackwestern.widgets.AppTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:text="@string/string_chat_user_name"
+            android:textSize="@dimen/dimen_18sp"
+            app:textStyle="@integer/PT_SANS_WEB_REGULAR" />
+    </android.support.v7.widget.Toolbar>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/toolbarChat">
+
+        <LinearLayout
+            android:id="@+id/contentRoot"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/color_white"
+            android:elevation="@dimen/dimen_4dp"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+
+                <android.support.v7.widget.RecyclerView
+                    android:id="@+id/rvChats"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scrollbars="none" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="4dp"
+                    android:layout_gravity="bottom"
+                    android:background="@drawable/shadow_top" />
+            </FrameLayout>
+
+            <LinearLayout
+                android:id="@+id/llAddMessage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/color_white"
+                android:elevation="@dimen/dimen_4dp"
+                android:gravity="center_vertical"
+                android:paddingBottom="4dp"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:paddingTop="8dp">
+
+                <ImageView
+                    android:layout_width="@dimen/dimen_40dp"
+                    android:layout_height="@dimen/dimen_40dp"
+                    android:padding="@dimen/dimen_5dp"
+                    android:src="@drawable/ic_comment_add" />
+
+                <hackwestern.hack.com.hackwestern.widgets.AppEditText
+                    android:id="@+id/etMessage"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/dimen_5dp"
+                    android:layout_weight="1"
+                    android:background="@color/color_white"
+                    android:gravity="center_vertical"
+                    android:hint="@string/string_add_chat"
+                    android:padding="@dimen/dimen_5dp"
+                    android:textColor="#555555"
+                    android:textColorHint="@color/color_grey"
+                    android:textCursorDrawable="@drawable/drawable_cursor"
+                    android:textSize="14sp" />
+
+
+                <hackwestern.hack.com.hackwestern.widgets.AppButton
+                    android:id="@+id/btnSendMessage"
+                    android:layout_width="@dimen/dimen_72dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginLeft="@dimen/dimen_8dp"
+                    android:background="@color/transparent"
+                    android:elevation="@dimen/dimen_2dp"
+                    android:text="@string/string_send"
+                    android:textColor="@color/color_navy_blue" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </RelativeLayout>
+
+    <include
+        layout="@layout/layout_progress_bar_full_screen"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:visibility="gone"
+        tools:visibility="visible" />
+</RelativeLayout>
