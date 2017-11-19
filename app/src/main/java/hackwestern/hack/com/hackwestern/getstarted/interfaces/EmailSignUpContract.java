@@ -17,6 +17,8 @@ public interface EmailSignUpContract {
         void setSignUpDetailsEnabled(boolean show);
 
         void showProgressBar(boolean show);
+
+        void showHomeScreen();
     }
 
     interface Presenter {

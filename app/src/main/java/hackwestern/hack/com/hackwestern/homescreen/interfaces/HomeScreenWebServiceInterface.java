@@ -5,6 +5,7 @@ import java.util.List;
 import hackwestern.hack.com.hackwestern.homescreen.parsers.ChatsResponseParser;
 import hackwestern.hack.com.hackwestern.homescreen.parsers.RequestChatRequestParser;
 import hackwestern.hack.com.hackwestern.homescreen.parsers.RequestChatResponseParser;
+import retrofit2.Response;
 import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
@@ -20,8 +21,8 @@ public interface HomeScreenWebServiceInterface {
     String QUERY_EMAIL = "email";
 
     @GET("chat/all")
-    Observable<List<ChatsResponseParser>> getUserAllChats(@Query(QUERY_EMAIL) String email);
+    Observable<Response<List<ChatsResponseParser>>> getUserAllChats(@Query(QUERY_EMAIL) String email);
 
-    @POST
-    Observable<RequestChatResponseParser> requestChat(@Body RequestChatRequestParser requestParser);
+    @POST("chat/create")
+    Observable<Response<RequestChatResponseParser>> requestInitializeChat(@Body RequestChatRequestParser requestParser);
 }

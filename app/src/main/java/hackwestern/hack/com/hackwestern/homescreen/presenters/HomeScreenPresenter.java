@@ -11,6 +11,7 @@ import hackwestern.hack.com.hackwestern.homescreen.interfaces.HomeScreenContract
 import hackwestern.hack.com.hackwestern.homescreen.interfaces.HomeScreenWebServiceInterface;
 import hackwestern.hack.com.hackwestern.homescreen.parsers.ChatsResponseParser;
 import hackwestern.hack.com.hackwestern.utils.Utils;
+import retrofit2.Response;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -36,7 +37,7 @@ public class HomeScreenPresenter implements HomeScreenContract.Presenter {
         if (Utils.isNetworkAvailable(context)) {
             webServiceInterface.getUserAllChats(email).observeOn(AndroidSchedulers.mainThread())
                     .subscribeOn(Schedulers.io())
-                    .subscribe(new Subscriber<List<ChatsResponseParser>>() {
+                    .subscribe(new Subscriber<Response<List<ChatsResponseParser>>>() {
                         @Override
                         public void onCompleted() {
 
@@ -48,8 +49,8 @@ public class HomeScreenPresenter implements HomeScreenContract.Presenter {
                         }
 
                         @Override
-                        public void onNext(List<ChatsResponseParser> chatsResponseParsers) {
-                            if (chatsResponseParsers.size() == 0)
+                        public void onNext(Response<List<ChatsResponseParser>> response) {
+                            if (response.body().size() == 0)
                                 onFetchUserChatsSuccess(true);
                             else
                                 onFetchUserChatsSuccess(false);
@@ -65,6 +66,10 @@ public class HomeScreenPresenter implements HomeScreenContract.Presenter {
 
     @Override
     public void onFetchUserChatsSuccess(boolean isEmpty) {
+        if (isEmpty) {
+            view.showTextNoChatRoom(true);
+        } else {
 
+        }
     }
 }

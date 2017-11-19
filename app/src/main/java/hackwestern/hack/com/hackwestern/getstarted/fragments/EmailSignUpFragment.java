@@ -1,5 +1,6 @@
 package hackwestern.hack.com.hackwestern.getstarted.fragments;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.design.widget.CoordinatorLayout;
@@ -17,6 +18,7 @@ import hackwestern.hack.com.hackwestern.R;
 import hackwestern.hack.com.hackwestern.getstarted.interfaces.EmailSignUpContract;
 import hackwestern.hack.com.hackwestern.getstarted.parsers.SignupRequestDataParser;
 import hackwestern.hack.com.hackwestern.getstarted.presenters.EmailSignupPresenter;
+import hackwestern.hack.com.hackwestern.homescreen.activities.HomeScreenActivity;
 import hackwestern.hack.com.hackwestern.utils.Utils;
 import hackwestern.hack.com.hackwestern.widgets.AppEditText;
 
@@ -93,6 +95,19 @@ public class EmailSignUpFragment extends android.support.v4.app.Fragment impleme
         } else {
             progressBar.setVisibility(View.GONE);
         }
+    }
+
+    @Override
+    public void showHomeScreen() {
+        getActivity().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+
+                Intent intent = new Intent(getActivity(), HomeScreenActivity.class);
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+            }
+        });
     }
 
     /*

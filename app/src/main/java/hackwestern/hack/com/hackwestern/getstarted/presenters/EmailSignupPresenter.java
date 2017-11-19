@@ -74,7 +74,8 @@ public class EmailSignupPresenter implements EmailSignUpContract.Presenter {
 
     @Override
     public void onCreateProfileApiSuccess(SignupResponseParser responseParser) {
-        Log.i("ProfileApi", "Success");
+        Utils.showSnackBar(view.getParentView(), responseParser.getMessage());
+        view.showHomeScreen();
     }
 
     @Override

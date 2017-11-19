@@ -7,6 +7,7 @@ import hackwestern.hack.com.hackwestern.getstarted.presenters.EmailLoginPresente
 import hackwestern.hack.com.hackwestern.getstarted.presenters.EmailSignupPresenter;
 import hackwestern.hack.com.hackwestern.homescreen.presenters.ChatScreenPresenter;
 import hackwestern.hack.com.hackwestern.homescreen.presenters.HomeScreenPresenter;
+import hackwestern.hack.com.hackwestern.homescreen.presenters.RequestChatPresenter;
 import hackwestern.hack.com.hackwestern.injections.modules.ApiModule;
 
 /**
@@ -23,4 +24,6 @@ public interface ApiComponent {
     void inject(EmailLoginPresenter presenter);
 
     void inject(EmailSignupPresenter presenter);
+
+    void inject(RequestChatPresenter presenter);
 }

@@ -5,6 +5,5 @@ package hackwestern.hack.com.hackwestern;
  */
 
 public class BuildSchemeConstants {
-    public static final String BASE_URL = "https://vibes.mybluemix.net/v1/api/";
-
+    public static final String BASE_URL = "https://vibes.mybluemix.net/api/v1/";
 }

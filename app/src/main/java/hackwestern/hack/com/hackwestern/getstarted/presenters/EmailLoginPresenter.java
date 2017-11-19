@@ -5,6 +5,8 @@ import android.content.Context;
 import javax.inject.Inject;
 
 import hackwestern.hack.com.hackwestern.R;
+import hackwestern.hack.com.hackwestern.dbmodels.UserPreferencesData;
+import hackwestern.hack.com.hackwestern.dbmodels.UserProfileData;
 import hackwestern.hack.com.hackwestern.getstarted.interfaces.EmailLoginContract;
 import hackwestern.hack.com.hackwestern.getstarted.interfaces.GetStartedWebServiceInterface;
 import hackwestern.hack.com.hackwestern.getstarted.parsers.LoginRequestDataParser;
@@ -55,7 +57,7 @@ public class EmailLoginPresenter implements EmailLoginContract.Presenter {
                         public void onNext(Response<LoginResponseParser> response) {
                             if (response.isSuccess()) {
                                 LoginResponseParser parser = response.body();
-
+                                onEmailLoginSuccess(parser);
                             }
                         }
                     });
@@ -67,12 +69,15 @@ public class EmailLoginPresenter implements EmailLoginContract.Presenter {
 
     @Override
     public void onEmailLoginFailure(String message) {
-
+        view.showProgressBar(false);
+        Utils.showSnackBar(view.getParentView(), context.getString(R.string.string_error));
     }
 
     @Override
     public void onEmailLoginSuccess(LoginResponseParser responseParser) {
-
+        UserProfileData.saveUserData("Sarthak", responseParser.getEmail());
+        UserPreferencesData.getUserPreferencesData().setUserLoggedIn(true);
+        view.showHomeScreen();
     }
 
 

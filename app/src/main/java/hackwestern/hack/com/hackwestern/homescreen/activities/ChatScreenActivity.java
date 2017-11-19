@@ -111,7 +111,7 @@ public class ChatScreenActivity extends SwipeBackActivity implements ChatScreenC
         context = this;
 
         mFirebaseDatabaseReference = FirebaseDatabase.getInstance().getReference();
-        conversationId = "23423rsfsf34";
+//        conversationId = "23423rsfsf34";
 
         Query query = mFirebaseDatabaseReference.child(CONVERSATION_CHILD).child(conversationId).child(MESSAGES_CHILD);
         queryRef = query.orderByChild(KEY_POSTED_AT);

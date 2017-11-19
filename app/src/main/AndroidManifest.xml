@@ -37,6 +37,10 @@
             android:name=".homescreen.activities.HomeScreenActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme" />
+        <activity
+            android:name=".homescreen.activities.RequestChatActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
 
         <meta-data
             android:name="AA_DB_NAME"

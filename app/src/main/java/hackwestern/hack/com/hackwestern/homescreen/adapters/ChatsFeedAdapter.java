@@ -1,12 +1,14 @@
 package hackwestern.hack.com.hackwestern.homescreen.adapters;
 
 import android.content.Context;
+import android.support.v7.widget.LinearLayoutCompat;
 import android.support.v7.widget.RecyclerView;
 import android.text.format.DateUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -19,6 +21,7 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import hackwestern.hack.com.hackwestern.R;
 import hackwestern.hack.com.hackwestern.firebase.model.ChatDataModel;
 import hackwestern.hack.com.hackwestern.homescreen.model.ChatFeedDataModel;
@@ -35,6 +38,8 @@ public class ChatsFeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     private static final String KEY_POSTED_AT = "postedAt";
     private static final String KEY_TEXT = "text";
 
+    private OnFeedItemClickListener onFeedItemClickListener;
+
     private List<ChatFeedDataModel> dataModelList;
     private DatabaseReference firebaseDatabaseReference;
     private Query query;
@@ -49,6 +54,10 @@ public class ChatsFeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_chats_feed_card, parent, false);
         firebaseDatabaseReference = FirebaseDatabase.getInstance().getReference();
         return new ChatsFeedViewHolder(view);
+    }
+
+    public void setOnFeedItemClickListener(OnFeedItemClickListener clickListener) {
+        onFeedItemClickListener = clickListener;
     }
 
     @Override
@@ -80,6 +89,8 @@ public class ChatsFeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
 
     public class ChatsFeedViewHolder extends RecyclerView.ViewHolder {
 
+        @Bind(R.id.linearLayoutCard)
+        LinearLayout layoutCard;
         @Bind(R.id.userTitle)
         AppTextView tvUserTitle;
         @Bind(R.id.userText)
@@ -91,5 +102,16 @@ public class ChatsFeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
+
+        @OnClick(R.id.linearLayoutCard)
+        public void onClickCard() {
+            ChatFeedDataModel model = dataModelList.get(getAdapterPosition());
+            onFeedItemClickListener.onItemClicked(model.getMessageId(), model.getEmail(), model.getName());
+        }
+    }
+
+    public interface OnFeedItemClickListener {
+
+        void onItemClicked(String conversationId, String email, String name);
     }
 }
