@@ -8,6 +8,7 @@ import javax.inject.Singleton;
 import dagger.Module;
 import dagger.Provides;
 import hackwestern.hack.com.hackwestern.BuildSchemeConstants;
+import hackwestern.hack.com.hackwestern.getstarted.interfaces.GetStartedWebServiceInterface;
 import hackwestern.hack.com.hackwestern.homescreen.interfaces.HomeScreenWebServiceInterface;
 import okhttp3.Interceptor;
 import okhttp3.OkHttpClient;
@@ -65,6 +66,12 @@ public class ApiModule {
     @Singleton
     public HomeScreenWebServiceInterface provideHomeScreenWebService(Retrofit retrofit) {
         return retrofit.create(HomeScreenWebServiceInterface.class);
+    }
+
+    @Provides
+    @Singleton
+    public GetStartedWebServiceInterface provideService(Retrofit retrofit) {
+        return retrofit.create(GetStartedWebServiceInterface.class);
     }
 
 }

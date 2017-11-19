@@ -2,8 +2,13 @@
 
     package="hackwestern.hack.com.hackwestern">
 
-    <!--<uses-permission android:name="android.permission.INTERNET" />-->
-    <!--<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />-->
+    <permission
+        android:name="android.permission.INTERACT_ACROSS_USERS_FULL"
+        android:protectionLevel="signature" />
+
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 
     <application
         android:name=".BaseApplication"
@@ -14,7 +19,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".homescreen.activities.ChatScreenActivity"
+            android:name=".getstarted.activities.LoginScreenActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme">
             <intent-filter>
@@ -24,6 +29,15 @@
             </intent-filter>
         </activity>
 
+        <activity
+            android:name=".homescreen.activities.ChatScreenActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".homescreen.activities.HomeScreenActivity"
+            android:screenOrientation="portrait"
+            android:theme="@style/AppTheme" />
+
         <meta-data
             android:name="AA_DB_NAME"
             android:value="hackwestern.db" />
@@ -32,7 +46,7 @@
             android:value="1" />
         <meta-data
             android:name="AA_MODELS"
-            android:value="hackwestern.hack.com.hackwestern.dbmodels.UserProfileData" />
+            android:value="hackwestern.hack.com.hackwestern.dbmodels.UserProfileData, hackwestern.hack.com.hackwestern.dbmodels.UserPreferencesData" />
 
     </application>
 

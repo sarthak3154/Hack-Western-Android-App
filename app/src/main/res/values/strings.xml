@@ -10,7 +10,12 @@
     <string name="string_hint_email">Email</string>
     <string name="string_email_signup_screen_title">Signup with Vibes</string>
     <string name="string_hint_name">Full Name</string>
+    <string name="string_password_length_error">Password must be atleast 6 characters</string>
+    <string name="string_email_format_error">Enter a valid Email Address</string>
+    <string name="string_name_length_error">Name cannot be less than 3 characters</string>
     <string name="string_sign_up_vibes">Signup</string>
     <string name="string_email_already_registered_title">Already Registered? Login</string>
+    <string name="string_error_no_network">Network Not Available</string>
+    <string name="string_hint_twitter_username">Twitter Username</string>
 
 </resources>

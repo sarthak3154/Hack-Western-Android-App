@@ -123,6 +123,36 @@
                     app:textStyle="@integer/OPEN_SANS_REGULAR" />
             </LinearLayout>
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dimen_30dp"
+                android:layout_marginRight="@dimen/dimen_30dp"
+                android:layout_marginTop="@dimen/dimen_20dp"
+                android:background="@drawable/drawable_email_linear_layout">
+
+
+                <hackwestern.hack.com.hackwestern.widgets.AppEditText
+                    android:id="@+id/etTwitterUsername"
+                    style="@style/Theme.App.EditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/dimen_25dp"
+                    android:layout_marginRight="@dimen/dimen_25dp"
+                    android:background="@color/color_edit_text_background"
+                    android:hint="@string/string_hint_twitter_username"
+                    android:inputType="textPassword"
+                    android:paddingBottom="@dimen/dimen_9dp"
+                    android:paddingLeft="@dimen/dimen_15dp"
+                    android:paddingRight="@dimen/dimen_15dp"
+                    android:paddingTop="@dimen/dimen_9dp"
+                    android:textColor="@color/color_black_secondary"
+                    android:textColorHint="@color/color_hint_grey"
+                    android:textSize="@dimen/dimen_19sp"
+                    app:textStyle="@integer/OPEN_SANS_REGULAR" />
+            </LinearLayout>
+
             <hackwestern.hack.com.hackwestern.widgets.AppButton
                 android:id="@+id/buttonEmailSignUp"
                 android:layout_width="match_parent"

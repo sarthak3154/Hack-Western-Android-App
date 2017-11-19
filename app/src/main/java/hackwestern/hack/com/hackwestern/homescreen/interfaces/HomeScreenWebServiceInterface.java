@@ -3,7 +3,9 @@ package hackwestern.hack.com.hackwestern.homescreen.interfaces;
 import java.util.List;
 
 import hackwestern.hack.com.hackwestern.homescreen.parsers.ChatsResponseParser;
+import hackwestern.hack.com.hackwestern.homescreen.parsers.RequestChatRequestParser;
 import hackwestern.hack.com.hackwestern.homescreen.parsers.RequestChatResponseParser;
+import retrofit2.http.Body;
 import retrofit2.http.GET;
 import retrofit2.http.POST;
 import retrofit2.http.Query;
@@ -21,5 +23,5 @@ public interface HomeScreenWebServiceInterface {
     Observable<List<ChatsResponseParser>> getUserAllChats(@Query(QUERY_EMAIL) String email);
 
     @POST
-    Observable<RequestChatResponseParser> requestChat();
+    Observable<RequestChatResponseParser> requestChat(@Body RequestChatRequestParser requestParser);
 }
