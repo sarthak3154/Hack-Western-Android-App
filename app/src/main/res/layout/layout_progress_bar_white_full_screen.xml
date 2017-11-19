@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/layoutProgressBar"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:clickable="true"
+    android:gravity="center"
+    android:orientation="horizontal">
+
+
+    <hackwestern.hack.com.hackwestern.widgets.CustomProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="@dimen/dimen_40dp"
+        android:layout_height="@dimen/dimen_40dp"
+        android:layout_gravity="center"
+        app:barWidth="@dimen/dimen_3dp"
+        app:pBarColor="@color/colorAccent"
+        app:progressIndeterminate="true" />
+
+</LinearLayout>

@@ -3,5 +3,14 @@
     <string name="string_chat_user_name">Sarthak</string>
     <string name="string_send">Send</string>
     <string name="string_add_chat">Type in</string>
+    <string name="string_email_login_screen_title">Login to Vibes</string>
+    <string name="string_hint_password">Password</string>
+    <string name="string_login_into_vibes">Login</string>
+    <string name="string_email_sign_up_title">New User? Sign Up</string>
+    <string name="string_hint_email">Email</string>
+    <string name="string_email_signup_screen_title">Signup with Vibes</string>
+    <string name="string_hint_name">Full Name</string>
+    <string name="string_sign_up_vibes">Signup</string>
+    <string name="string_email_already_registered_title">Already Registered? Login</string>
 
 </resources>

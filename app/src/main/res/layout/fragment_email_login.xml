@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/parentViewLogin"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/dimen_40dp"
+            android:paddingLeft="@dimen/dimen_55dp"
+            android:paddingRight="@dimen/dimen_55dp">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="@dimen/dimen_10dp">
+
+                <ImageView
+                    android:id="@+id/imageViewSignUp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:background="@drawable/drawable_ripple_effect"
+                    android:padding="@dimen/dimen_3dp"
+                    android:src="@drawable/ic_action_collapse" />
+
+                <hackwestern.hack.com.hackwestern.widgets.AppTextView
+                    android:id="@+id/textViewNewUser"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/imageViewSignUp"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center"
+                    android:layout_marginBottom="@dimen/dimen_10dp"
+                    android:layout_marginTop="@dimen/dimen_5dp"
+                    android:gravity="center"
+                    android:text="@string/string_email_sign_up_title"
+                    android:textColor="@color/color_white"
+                    android:textSize="@dimen/dimen_17sp"
+                    app:textStyle="@integer/PT_SANS_WEB_REGULAR" />
+            </RelativeLayout>
+        </RelativeLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+                <hackwestern.hack.com.hackwestern.widgets.AppTextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_gravity="center"
+                    android:ems="13"
+                    android:gravity="center"
+                    android:paddingBottom="@dimen/dimen_20dp"
+                    android:paddingTop="@dimen/dimen_20dp"
+                    android:text="@string/string_email_login_screen_title"
+                    android:textSize="@dimen/dimen_25sp"
+                    app:textStyle="@integer/PT_SANS_WEB_REGULAR" />
+            </RelativeLayout>
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dimen_30dp"
+                android:layout_marginRight="@dimen/dimen_30dp"
+                android:layout_marginTop="@dimen/dimen_20dp"
+                android:background="@drawable/drawable_email_linear_layout">
+
+
+                <hackwestern.hack.com.hackwestern.widgets.AppEditText
+                    android:id="@+id/etLoginEmail"
+                    style="@style/Theme.App.EditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/dimen_25dp"
+                    android:layout_marginRight="@dimen/dimen_25dp"
+                    android:background="@color/color_edit_text_background"
+                    android:hint="@string/string_hint_email"
+                    android:inputType="textEmailAddress"
+                    android:paddingBottom="@dimen/dimen_9dp"
+                    android:paddingLeft="@dimen/dimen_15dp"
+                    android:paddingRight="@dimen/dimen_15dp"
+                    android:paddingTop="@dimen/dimen_9dp"
+                    android:textColor="@color/color_black_secondary"
+                    android:textColorHint="@color/color_hint_grey"
+                    android:textSize="@dimen/dimen_19sp"
+                    app:textStyle="@integer/OPEN_SANS_REGULAR" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/dimen_30dp"
+                android:layout_marginRight="@dimen/dimen_30dp"
+                android:layout_marginTop="@dimen/dimen_20dp"
+                android:background="@drawable/drawable_email_linear_layout">
+
+
+                <hackwestern.hack.com.hackwestern.widgets.AppEditText
+                    android:id="@+id/etLoginPassword"
+                    style="@style/Theme.App.EditText"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="@dimen/dimen_25dp"
+                    android:layout_marginRight="@dimen/dimen_25dp"
+                    android:background="@color/color_edit_text_background"
+                    android:hint="@string/string_hint_password"
+                    android:imeOptions="actionDone"
+                    android:inputType="textPassword"
+                    android:paddingBottom="@dimen/dimen_9dp"
+                    android:paddingLeft="@dimen/dimen_15dp"
+                    android:paddingRight="@dimen/dimen_15dp"
+                    android:paddingTop="@dimen/dimen_9dp"
+                    android:textColor="@color/color_black_secondary"
+                    android:textColorHint="@color/color_hint_grey"
+                    android:textSize="@dimen/dimen_19sp"
+                    app:textStyle="@integer/OPEN_SANS_REGULAR" />
+            </LinearLayout>
+
+            <hackwestern.hack.com.hackwestern.widgets.AppButton
+                android:id="@+id/buttonEmailLogin"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/dimen_50dp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="@dimen/dimen_20dp"
+                android:layout_marginLeft="@dimen/dimen_30dp"
+                android:layout_marginRight="@dimen/dimen_30dp"
+                android:layout_marginTop="@dimen/dimen_20dp"
+                android:background="@drawable/selector_rounded_white_button"
+                android:text="@string/string_login_into_vibes"
+                android:textAllCaps="false"
+                android:textColor="@color/color_black"
+                android:textSize="@dimen/dimen_20sp"
+                app:textStyle="@integer/OPEN_SANS_REGULAR" />
+        </LinearLayout>
+
+        <include
+            layout="@layout/layout_progress_bar_white_full_screen"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:visibility="gone"
+            tools:visibility="visible" />
+
+    </RelativeLayout>
+</android.support.design.widget.CoordinatorLayout>
