@@ -142,7 +142,7 @@
                     android:layout_marginRight="@dimen/dimen_25dp"
                     android:background="@color/color_edit_text_background"
                     android:hint="@string/string_hint_twitter_username"
-                    android:inputType="textPassword"
+                    android:inputType="text"
                     android:paddingBottom="@dimen/dimen_9dp"
                     android:paddingLeft="@dimen/dimen_15dp"
                     android:paddingRight="@dimen/dimen_15dp"

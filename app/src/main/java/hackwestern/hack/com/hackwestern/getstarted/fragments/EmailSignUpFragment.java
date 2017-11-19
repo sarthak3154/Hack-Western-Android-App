@@ -106,6 +106,7 @@ public class EmailSignUpFragment extends android.support.v4.app.Fragment impleme
                 Intent intent = new Intent(getActivity(), HomeScreenActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
+                getActivity().overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
             }
         });
     }

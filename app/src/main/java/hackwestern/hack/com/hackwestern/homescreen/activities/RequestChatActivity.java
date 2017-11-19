@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
 
@@ -65,12 +66,13 @@ public class RequestChatActivity extends BaseActivity implements RequestChatScre
     }
 
     @Override
-    public void startChatScreen(String conversationId, String emailId, String name) {
+    public void startChatScreen(String conversationId, String emailId, String userName) {
+        Log.i("ChatScreen", conversationId + " ," + emailId + " ," + userName);
         Intent intent = new Intent(RequestChatActivity.this, ChatScreenActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
         intent.putExtra(KEY_CONVERSATION_ID, conversationId);
         intent.putExtra(KEY_EMAIL, emailId);
-        intent.putExtra(KEY_NAME, name);
+        intent.putExtra(KEY_NAME, userName);
         startActivity(intent);
     }
 

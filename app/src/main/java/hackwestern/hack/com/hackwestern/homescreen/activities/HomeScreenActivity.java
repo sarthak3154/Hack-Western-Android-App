@@ -14,6 +14,7 @@ import java.util.List;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 import hackwestern.hack.com.hackwestern.BaseActivity;
 import hackwestern.hack.com.hackwestern.R;
 import hackwestern.hack.com.hackwestern.dbmodels.UserProfileData;
@@ -61,12 +62,17 @@ public class HomeScreenActivity extends BaseActivity implements HomeScreenContra
         linearLayoutManager = new LinearLayoutManager(this);
         recyclerViewChats.setLayoutManager(linearLayoutManager);
         recyclerViewChats.setAdapter(feedAdapter);
+    }
+
+    @Override
+    protected void onResume() {
         if (!isViewDestroyed()) {
             UserProfileData userProfileData = UserProfileData.getUserData();
             if (userProfileData != null) {
                 presenter.fetchUserConversations(userProfileData.getEmail());
             }
         }
+        super.onResume();
     }
 
     @Override
@@ -92,6 +98,13 @@ public class HomeScreenActivity extends BaseActivity implements HomeScreenContra
         }
         showProgressBar(false);
         feedAdapter.notifyDataSetChanged();
+    }
+
+    @OnClick(R.id.btnNewChat)
+    public void startNewChat() {
+        Intent intent = new Intent(HomeScreenActivity.this, RequestChatActivity.class);
+        startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_left);
     }
 
     @Override

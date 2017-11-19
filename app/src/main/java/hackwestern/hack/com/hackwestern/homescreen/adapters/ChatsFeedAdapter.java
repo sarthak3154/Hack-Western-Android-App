@@ -4,12 +4,14 @@ import android.content.Context;
 import android.support.v7.widget.LinearLayoutCompat;
 import android.support.v7.widget.RecyclerView;
 import android.text.format.DateUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 
+import com.google.common.collect.Lists;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -17,6 +19,7 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.Iterator;
 import java.util.List;
 
 import butterknife.Bind;
@@ -47,12 +50,12 @@ public class ChatsFeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
     public ChatsFeedAdapter(Context context, List<ChatFeedDataModel> dataModelList) {
         this.context = context;
         this.dataModelList = dataModelList;
+        firebaseDatabaseReference = FirebaseDatabase.getInstance().getReference();
     }
 
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.layout_chats_feed_card, parent, false);
-        firebaseDatabaseReference = FirebaseDatabase.getInstance().getReference();
         return new ChatsFeedViewHolder(view);
     }
 
@@ -67,11 +70,19 @@ public class ChatsFeedAdapter extends RecyclerView.Adapter<RecyclerView.ViewHold
         if (dataModelList.get(position).getName() != null)
             viewHolder.tvUserTitle.setText(dataModelList.get(position).getName());
         query = firebaseDatabaseReference.child(KEY_CONVERSATION).child(dataModelList.get(position).getMessageId()).child(KEY_MESSAGES).orderByChild(KEY_POSTED_AT);
-        query.limitToLast(1).addValueEventListener(new ValueEventListener() {
+        query.limitToLast(1).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                viewHolder.tvUserText.setText(dataSnapshot.child(KEY_TEXT).getValue().toString());
-                viewHolder.lastUpdate.setText(DateUtils.getRelativeTimeSpanString(Long.parseLong(dataSnapshot.child(KEY_POSTED_AT).getValue().toString())));
+                Log.i("Data", dataSnapshot.toString());
+                Iterator<DataSnapshot> iterator = dataSnapshot.getChildren().iterator();
+                List<DataSnapshot> dataSnapshots = Lists.newArrayList(iterator);
+                List<DataSnapshot> keyValueDataPairs = Lists.newArrayList(dataSnapshots.get(0).getChildren().iterator());
+                for (int i = 0; i < keyValueDataPairs.size(); i++) {
+                    if (keyValueDataPairs.get(i).getKey().equals(KEY_POSTED_AT))
+                        viewHolder.lastUpdate.setText(DateUtils.getRelativeTimeSpanString(Long.parseLong(keyValueDataPairs.get(i).getValue().toString())));
+                    else if (keyValueDataPairs.get(i).getKey().equals(KEY_TEXT))
+                        viewHolder.tvUserText.setText(keyValueDataPairs.get(i).getValue().toString());
+                }
             }
 
             @Override

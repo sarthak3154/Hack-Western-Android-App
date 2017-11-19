@@ -116,11 +116,6 @@ public class ChatScreenActivity extends SwipeBackActivity implements ChatScreenC
         Query query = mFirebaseDatabaseReference.child(CONVERSATION_CHILD).child(conversationId).child(MESSAGES_CHILD);
         queryRef = query.orderByChild(KEY_POSTED_AT);
 
-        UserProfileData userProfileData = UserProfileData.getUserData();
-        if (userProfileData != null)
-            mFirebaseDatabaseReference.child(CONVERSATION_CHILD).child(conversationId).child(MESSAGES_CHILD).child(KEY_SENDER_EMAIL).setValue(userProfileData.getEmail());
-        mFirebaseDatabaseReference.child(CONVERSATION_CHILD).child(conversationId).child(MESSAGES_CHILD).child(KEY_RECIPIENT_EMAIL).setValue(recipientEmail);
-
         chatsAdapter = new ChatsAdapter(this, ChatDataModel.class, R.layout.item_chat_message, ChatViewHolder.class, queryRef);
         queryRef.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -196,7 +191,7 @@ public class ChatScreenActivity extends SwipeBackActivity implements ChatScreenC
 
     @Override
     public void onBackPressed() {
-        finish();
+        super.onBackPressed();
         overridePendingTransition(R.anim.slide_in_right, R.anim.slide_out_right);
     }
 

@@ -1,6 +1,7 @@
 package hackwestern.hack.com.hackwestern.homescreen.presenters;
 
 import android.content.Context;
+import android.util.Log;
 
 import javax.inject.Inject;
 
@@ -53,7 +54,7 @@ public class RequestChatPresenter implements RequestChatScreenContract.Presenter
 
                         @Override
                         public void onNext(Response<RequestChatResponseParser> response) {
-                            if (response.code() == 200)
+                            if (response.isSuccess() || response.code() == 200)
                                 onRequestChatApiSuccess(response.body());
                             else
                                 onRequesChatApiFailure(response.message());

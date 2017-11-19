@@ -35,6 +35,43 @@
                 app:textStyle="@integer/PT_SANS_WEB_REGULAR" />
         </android.support.v7.widget.Toolbar>
 
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/dimen_55dp"
+            android:background="@color/colorPrimary">
+
+            <hackwestern.hack.com.hackwestern.widgets.AppButton
+                android:id="@+id/btnNewChat"
+                android:layout_width="@dimen/dimen_100dp"
+                android:layout_height="@dimen/dimen_40dp"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="center"
+                android:layout_marginEnd="@dimen/dimen_20dp"
+                android:layout_marginRight="@dimen/dimen_20dp"
+                android:background="@drawable/selector_rounded_white_button"
+                android:text="@string/string_reach_user"
+                android:textAllCaps="false"
+                android:textColor="@color/color_navy_blue"
+                android:textSize="@dimen/dimen_15sp"
+                app:textStyle="@integer/OPEN_SANS_REGULAR" />
+
+            <hackwestern.hack.com.hackwestern.widgets.AppTextView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_toLeftOf="@id/btnNewChat"
+                android:layout_toStartOf="@id/btnNewChat"
+                android:gravity="center_vertical"
+                android:paddingLeft="@dimen/dimen_20dp"
+                android:text="@string/string_text_new_chat"
+                android:textSize="@dimen/dimen_16sp"
+                app:textStyle="@integer/OPEN_SANS_REGULAR" />
+
+
+        </RelativeLayout>
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -61,9 +98,10 @@
         layout="@layout/layout_progress_bar_full_screen"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentRight="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
+        android:layout_marginTop="11dp"
         android:visibility="gone"
         tools:visibility="visible" />
 </RelativeLayout>

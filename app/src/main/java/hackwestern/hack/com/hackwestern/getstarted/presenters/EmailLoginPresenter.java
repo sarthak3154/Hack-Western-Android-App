@@ -75,7 +75,7 @@ public class EmailLoginPresenter implements EmailLoginContract.Presenter {
 
     @Override
     public void onEmailLoginSuccess(LoginResponseParser responseParser) {
-        UserProfileData.saveUserData("Sarthak", responseParser.getEmail());
+        UserProfileData.saveUserData(responseParser.getName() != null ? responseParser.getName() : "Sarthak", responseParser.getEmail());
         UserPreferencesData.getUserPreferencesData().setUserLoggedIn(true);
         view.showHomeScreen();
     }

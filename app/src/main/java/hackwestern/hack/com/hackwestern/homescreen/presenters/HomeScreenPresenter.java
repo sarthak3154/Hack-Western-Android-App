@@ -2,6 +2,7 @@ package hackwestern.hack.com.hackwestern.homescreen.presenters;
 
 import android.content.Context;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Timer;
 
@@ -9,6 +10,7 @@ import javax.inject.Inject;
 
 import hackwestern.hack.com.hackwestern.homescreen.interfaces.HomeScreenContract;
 import hackwestern.hack.com.hackwestern.homescreen.interfaces.HomeScreenWebServiceInterface;
+import hackwestern.hack.com.hackwestern.homescreen.model.ChatFeedDataModel;
 import hackwestern.hack.com.hackwestern.homescreen.parsers.ChatsResponseParser;
 import hackwestern.hack.com.hackwestern.utils.Utils;
 import retrofit2.Response;
@@ -50,10 +52,7 @@ public class HomeScreenPresenter implements HomeScreenContract.Presenter {
 
                         @Override
                         public void onNext(Response<List<ChatsResponseParser>> response) {
-                            if (response.body().size() == 0)
-                                onFetchUserChatsSuccess(true);
-                            else
-                                onFetchUserChatsSuccess(false);
+                            onFetchUserChatsSuccess(response.body());
                         }
                     });
         }
@@ -65,11 +64,20 @@ public class HomeScreenPresenter implements HomeScreenContract.Presenter {
     }
 
     @Override
-    public void onFetchUserChatsSuccess(boolean isEmpty) {
-        if (isEmpty) {
-            view.showTextNoChatRoom(true);
+    public void onFetchUserChatsSuccess(List<ChatsResponseParser> chatsResponseParserList) {
+        if (chatsResponseParserList.size() > 0) {
+            List<ChatFeedDataModel> modelList = new ArrayList<>();
+            modelList.clear();
+            for (ChatsResponseParser responseParser : chatsResponseParserList) {
+                ChatFeedDataModel dataModel = new ChatFeedDataModel();
+                dataModel.setEmail(responseParser.getEmail());
+                dataModel.setMessageId(responseParser.getMessageId());
+                dataModel.setName(responseParser.getName());
+                modelList.add(dataModel);
+            }
+            view.showMyChats(modelList);
         } else {
-
+            view.showTextNoChatRoom(true);
         }
     }
 }

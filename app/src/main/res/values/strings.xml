@@ -23,5 +23,7 @@
     <string name="string_chat_volunteer_chat">Volunteer Chat</string>
     <string name="string_chat_with_admin">Chat with Therapist</string>
     <string name="string_text_chat_interesting">Good Chat and then things could never go wrong!</string>
+    <string name="string_reach_user">New Chat</string>
+    <string name="string_text_new_chat">Looking for a New Chat?</string>
 
 </resources>
