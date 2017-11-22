@@ -21,7 +21,7 @@ import rx.functions.Func1;
 import rx.schedulers.Schedulers;
 
 /**
- * Created by Lenovo on 18-11-2017
+ * Created by Sarthak on 18-11-2017
  */
 public class EmailLoginPresenter implements EmailLoginContract.Presenter {
 
